@@ -1,0 +1,15 @@
+body {
+  border: 2px dashed black;
+}
+
+main {
+  background-color: aquamarine;
+}
+
+.type-area {
+  background-color: rgb(255, 254, 184);
+}
+
+.words {
+  font-size: 1.5rem;
+}
