@@ -6,7 +6,6 @@ let currentIndex = 0
 
 const test = document.querySelector('.test')
 
-
 /* Experimental stuff start */
 const phrase = document.querySelector('.test')
 const phraseNodes = phrase.childNodes
@@ -16,36 +15,39 @@ const phraseConvert = [...phrase.textContent].map(x => {
   return `<span class="">${x}</span>`
 }).join('')
 
-
-
 phrase.innerHTML = phraseConvert
 
-// console.log(phrase.innerHTML)
-
-
-/* Experimental stuff end */
-
-
-
-
-const correctKey = () => {
-  // change color of key to green
+phraseNodes[0].classList.add('current-letter')
+const correctKey = (e) => {
+  // add green class
+  // remove red class
   // increment currentIndex
+  // set the next node's class to 'current-letter'
+  phraseNodes[currentIndex].classList.add('green')
+  phraseNodes[currentIndex].classList.remove('red')
+  phraseNodes[currentIndex].classList.remove('current-letter')
+  if (currentIndex === phraseNodes.length - 1) {
+    return;
+  }
+  phraseNodes[currentIndex + 1].classList.add('current-letter')
+  currentIndex++
 }
 
-const wrongKey = () => {
+const wrongKey = (e) => {
   // change color of key to red
+  phraseNodes[currentIndex].classList.add('red')
 }
 
-const keypress = (e) => {
-  console.log(e.key)
-  if (e.key === letters[currentIndex]) {
-    correctKey()
+const keyPress = (e) => {
+  // console.log(e.key)
+  // console.log('current letter:', phraseNodes[currentIndex].textContent)
+  if (e.key === phraseNodes[currentIndex].textContent && currentIndex < phraseNodes.length) {
+    correctKey(e)
   } else {
-    wrongKey()
+    wrongKey(e)
   }
 }
-window.addEventListener('keydown', keypress)
+window.addEventListener('keydown', keyPress)
 
 /*
   if the key pressed is the next one supposed to be pressed in 'letters',

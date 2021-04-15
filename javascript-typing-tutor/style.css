@@ -22,6 +22,6 @@ main {
   color: rgb(0, 236, 0);
 }
 
-.currentLetter {
+.current-letter {
   border-bottom: 2px solid black;
 }
