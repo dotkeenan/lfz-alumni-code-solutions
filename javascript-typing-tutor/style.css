@@ -13,3 +13,15 @@ main {
 .words {
   font-size: 1.5rem;
 }
+
+.red {
+  color: red;
+}
+
+.green {
+  color: rgb(0, 236, 0);
+}
+
+.currentLetter {
+  border-bottom: 2px solid black;
+}
