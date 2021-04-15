@@ -25,3 +25,7 @@ main {
 .current-letter {
   border-bottom: 2px solid black;
 }
+
+.modal {
+  display: block;
+}
