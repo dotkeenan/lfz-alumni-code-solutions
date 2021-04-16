@@ -1,28 +1,17 @@
-const words = Array.from(document.querySelectorAll('span.word-span'))
-const wordsInnerText = words.map(x => x.innerText)
-const wordsStr = wordsInnerText.join('')
-const letters = [...wordsStr]
-let currentIndex = 0
+$('#endGame').modal('show')
 
-const test = document.querySelector('.test')
-
-/* Experimental stuff start */
-const phrase = document.querySelector('.test')
+const phrase = document.querySelector('.phrase')
 const phraseNodes = phrase.childNodes
 const phraseStr = phrase.textContent;
-// const phraseHTML = phrase.innerHTML;
 const phraseConvert = [...phrase.textContent].map(x => {
   return `<span class="">${x}</span>`
 }).join('')
 
 phrase.innerHTML = phraseConvert
-
 phraseNodes[0].classList.add('current-letter')
+let currentIndex = 0
+
 const correctKey = (e) => {
-  // add green class
-  // remove red class
-  // increment currentIndex
-  // set the next node's class to 'current-letter'
   phraseNodes[currentIndex].classList.add('green')
   phraseNodes[currentIndex].classList.remove('red')
   phraseNodes[currentIndex].classList.remove('current-letter')
