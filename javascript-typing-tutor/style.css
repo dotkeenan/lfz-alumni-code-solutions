@@ -1,9 +1,11 @@
 body {
   border: 2px dashed black;
+  height: 100vh;
 }
 
 main {
   background-color: aquamarine;
+  height: 75%;
 }
 
 .type-area {
