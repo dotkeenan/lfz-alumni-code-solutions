@@ -58,8 +58,8 @@ const formatScore = (score) => {
 }
 
 const resetGame = () => {
+  phraseNodes.forEach(x => x.classList.remove('green', 'current-letter', 'red'))
   phraseNodes[0].classList.add('current-letter')
-  phraseNodes.forEach(x => x.classList.remove('green'))
   currentIndex = 0
   correct = 0
   total = phrase.textContent.length;
