@@ -29,6 +29,7 @@ const phraseConvert = [...phrase.textContent].map(x => {
 }).join('')
 phrase.innerHTML = phraseConvert
 
+const liveAcc = document.getElementById('liveAcc')
 const accuracy = document.getElementById('accuracy')
 const newGame = document.getElementById('playAgain')
 const newTest = document.getElementById('newTest')
@@ -51,6 +52,10 @@ const randomTestPicker = () => {
   resetGame();
 }
 
+// Need to implement this in all the scenarios.  Also resetting.
+const updateLiveScore = (score) => {
+  liveAcc.textContent = formatScore(score)
+}
 
 /* function to convert accuracy to correct format */
 const formatScore = (score) => {
@@ -70,11 +75,9 @@ const resetGame = () => {
 /* functions that execute based on correct or incorrect keypresses */
 const correctKey = (e) => {
   phraseNodes[currentIndex].classList.add('green')
-  phraseNodes[currentIndex].classList.remove('red')
-  phraseNodes[currentIndex].classList.remove('current-letter')
+  phraseNodes[currentIndex].classList.remove('red', 'current-letter')
   correct++
   score = correct / total
-  console.log(score)
   if (currentIndex === phraseNodes.length - 1) {
     accuracy.textContent = formatScore(score)
     $('#endGame').modal('show')
@@ -90,8 +93,6 @@ const wrongKey = (e) => {
 }
 
 const keyPress = (e) => {
-  // console.log(e.key)
-  // console.log('current letter:', phraseNodes[currentIndex].textContent)
   if (e.key === 'Shift') return;
   if (e.key === phraseNodes[currentIndex].textContent && currentIndex < phraseNodes.length) {
     correctKey(e)
