@@ -83,7 +83,6 @@ const resetGame = () => {
 const correctKey = (e) => {
   phraseNodes[currentIndex].classList.add('green')
   phraseNodes[currentIndex].classList.remove('red', 'current-letter')
-  // correct++
   score = correct / total
   updateLiveScore(score)
   if (currentIndex === phraseNodes.length - 1) {
