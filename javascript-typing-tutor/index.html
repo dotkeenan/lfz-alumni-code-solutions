@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+  <main class="container">
+    <header class="row justify-content-center">
+      <h1 class="col-12 text-center">Typing Tutor</h1>
+      <p class="col-12 text-center">Begin typing the text below!</p>
+      <p class="col-12 text-left">Accuracy: <span id="liveAcc"></span> %</p>
+      <p class="col-12 text-left">Mistakes: <span id="liveMistakes"></span></p>
+    </header>
+    <div class="container type-area">
+      <div class="row justify-content-center words">
+        <span class="phrase">Welcome to the fanciest, most robust typing test ever created!</span>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-center mt-2">
+        <button id="newTest" class="btn btn-primary mr-2">New Test</button>
+        <button id="restart" class="btn btn-primary mx-2">Restart</button>
+      </div>
+    </div>
+
+    <div id="endGame" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Congratulations!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Accuracy: <span id="accuracyModal"></span><span>&#37;</span></p>
+            <p>Mistakes: <span id="mistakesModal"></span></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="playAgain" class="btn btn-primary">New Test!</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous" ></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  <script src="main.js" ></script>
+</body>
+</html>
