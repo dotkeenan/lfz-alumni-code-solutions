@@ -26,7 +26,6 @@ const phraseNodes = phrase.childNodes
 const phraseConvert = [...phrase.textContent].map(x => {
   return `<span class="">${x}</span>`
 }).join('')
-console.log(phraseNodes)
 const liveAcc = document.getElementById('liveAcc')
 const accuracyModal = document.getElementById('accuracyModal')
 const mistakesModal = document.getElementById('mistakesModal')
