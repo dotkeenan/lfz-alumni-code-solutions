@@ -23,24 +23,23 @@ const completedTests = [];
 /* Create dom queries and initial conversions to span separated letters */
 const phrase = document.querySelector('.phrase')
 const phraseNodes = phrase.childNodes
-// const phraseStr = phrase.textContent;
 const phraseConvert = [...phrase.textContent].map(x => {
   return `<span class="">${x}</span>`
 }).join('')
-phrase.innerHTML = phraseConvert
-
+console.log(phraseNodes)
 const liveAcc = document.getElementById('liveAcc')
-const accuracy = document.getElementById('accuracy')
+const accuracyModal = document.getElementById('accuracyModal')
+const mistakesModal = document.getElementById('mistakesModal')
 const newGame = document.getElementById('playAgain')
 const newTest = document.getElementById('newTest')
 const restart = document.getElementById('restart')
-const mistakesEl = document.getElementById('mistakes')
 const liveMistakes = document.getElementById('liveMistakes')
 
-/* Starting code */
+/* Starting code, initial values */
+phrase.innerHTML = phraseConvert
 phraseNodes[0].classList.add('current-letter')
 let currentIndex = 0
-let correct = 0;
+let correct = phrase.textContent.length;
 let total = phrase.textContent.length;
 let score = (correct / total) > 0 ? correct / total : 0
 let mistakes = 0;
@@ -66,15 +65,18 @@ const formatScore = (score) => {
   return (score * 100).toFixed(2)
 }
 
+updateLiveScore(score)
+
 const resetGame = () => {
   phraseNodes.forEach(x => x.classList.remove('green', 'current-letter', 'red'))
   phraseNodes[0].classList.add('current-letter')
   currentIndex = 0
-  correct = 0
   mistakes = 0
   liveMistakes.textContent = 0
+  correct = phrase.textContent.length
   total = phrase.textContent.length;
   score = (correct / total) > 0 ? correct / total : 0
+  updateLiveScore(score)
   $('#endGame').modal('hide')
 }
 
@@ -82,11 +84,12 @@ const resetGame = () => {
 const correctKey = (e) => {
   phraseNodes[currentIndex].classList.add('green')
   phraseNodes[currentIndex].classList.remove('red', 'current-letter')
-  correct++
+  // correct++
   score = correct / total
+  updateLiveScore(score)
   if (currentIndex === phraseNodes.length - 1) {
-    accuracy.textContent = formatScore(score)
-    mistakesEl.textContent = mistakes
+    accuracyModal.textContent = formatScore(score)
+    mistakesModal.textContent = mistakes
     $('#endGame').modal('show')
     return;
   }
@@ -98,7 +101,9 @@ const wrongKey = (e) => {
   phraseNodes[currentIndex].classList.add('red')
   correct--
   mistakes++
+  score = correct / total
   liveMistakes.textContent = mistakes
+  updateLiveScore(score)
 }
 
 const keyPress = (e) => {
