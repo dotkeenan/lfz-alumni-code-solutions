@@ -34,6 +34,8 @@ const accuracy = document.getElementById('accuracy')
 const newGame = document.getElementById('playAgain')
 const newTest = document.getElementById('newTest')
 const restart = document.getElementById('restart')
+const mistakesEl = document.getElementById('mistakes')
+const liveMistakes = document.getElementById('liveMistakes')
 
 /* Starting code */
 phraseNodes[0].classList.add('current-letter')
@@ -41,6 +43,8 @@ let currentIndex = 0
 let correct = 0;
 let total = phrase.textContent.length;
 let score = (correct / total) > 0 ? correct / total : 0
+let mistakes = 0;
+liveMistakes.textContent = 0;
 
 /* function to pick new test */
 const randomTestPicker = () => {
@@ -67,6 +71,8 @@ const resetGame = () => {
   phraseNodes[0].classList.add('current-letter')
   currentIndex = 0
   correct = 0
+  mistakes = 0
+  liveMistakes.textContent = 0
   total = phrase.textContent.length;
   score = (correct / total) > 0 ? correct / total : 0
   $('#endGame').modal('hide')
@@ -80,6 +86,7 @@ const correctKey = (e) => {
   score = correct / total
   if (currentIndex === phraseNodes.length - 1) {
     accuracy.textContent = formatScore(score)
+    mistakesEl.textContent = mistakes
     $('#endGame').modal('show')
     return;
   }
@@ -90,6 +97,8 @@ const correctKey = (e) => {
 const wrongKey = (e) => {
   phraseNodes[currentIndex].classList.add('red')
   correct--
+  mistakes++
+  liveMistakes.textContent = mistakes
 }
 
 const keyPress = (e) => {
