@@ -7,17 +7,21 @@
   <title>Document</title>
 </head>
 <body>
+  <div id="counter"></div>
+  <button id="incrementBtn">+1</button>
+  <button id="decrementBtn">-1</button>
   <script>
-    const makeCounter = (test) => {
+    const makeCounter = () => {
       let privateCounter = 0;
       function changeBy(val) {
         privateCounter += val;
+        document.getElementById('counter').textContent = privateCounter
       }
       return {
-        increment: function() {
+        increment: () => {
           changeBy(1);
         },
-        decrement: function() {
+        decrement: () => {
           changeBy(-1);
         },
         value: () => {
@@ -28,9 +32,14 @@
         // }
       }
     }
-
     const counter1 = makeCounter();
     const counter2 = makeCounter();
+
+    const incrementBtn = document.getElementById('incrementBtn')
+    const decrementBtn = document.getElementById('decrementBtn')
+    incrementBtn.addEventListener('click', counter1.increment)
+    decrementBtn.addEventListener('click', counter1.decrement)
+
 
     alert(counter1.value());
 
