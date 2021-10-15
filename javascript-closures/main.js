@@ -7,5 +7,5 @@ const graduate = (credential) => {
 const medicalSchool = graduate('M.D.')
 const lawSchool = graduate('Esq.')
 
-MedicalSchool('Keenan Ng')
-lawSchool('Harry Specter')
+console.log(medicalSchool('Gregory House'))
+console.log(lawSchool('Harry Specter'))
