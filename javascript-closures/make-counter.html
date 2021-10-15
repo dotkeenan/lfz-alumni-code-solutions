@@ -18,15 +18,9 @@
         document.getElementById('counter').textContent = privateCounter
       }
       return {
-        increment: () => {
-          changeBy(1);
-        },
-        decrement: () => {
-          changeBy(-1);
-        },
-        value: () => {
-          return privateCounter;
-        }
+        increment: () => changeBy(1),
+        decrement: () => changeBy(-1),
+        value: () => privateCounter
       }
     }
     const counter1 = makeCounter();
