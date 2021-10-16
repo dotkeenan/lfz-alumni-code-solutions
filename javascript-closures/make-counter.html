@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="counter"></div>
+  <button id="incrementBtn">+1</button>
+  <button id="decrementBtn">-1</button>
+  <script>
+    const makeCounter = () => {
+      let privateCounter = 0;
+      function changeBy(val) {
+        privateCounter += val;
+        document.getElementById('counter').textContent = privateCounter
+      }
+      return {
+        increment: () => changeBy(1),
+        decrement: () => changeBy(-1),
+        value: () => privateCounter
+      }
+    }
+    const counter1 = makeCounter();
+    const counter2 = makeCounter();
+
+    const incrementBtn = document.getElementById('incrementBtn')
+    const decrementBtn = document.getElementById('decrementBtn')
+    incrementBtn.addEventListener('click', counter1.increment)
+    decrementBtn.addEventListener('click', counter1.decrement)
+
+
+    alert(counter1.value());
+
+    counter1.increment();
+    counter1.increment();
+    alert(counter1.value());
+
+    counter1.decrement();
+    alert(counter1.value())
+    alert(counter2.value())
+  </script>
+</body>
+</html>
