@@ -62,11 +62,19 @@ for (let i = 0; i < 3; i++) {
   console.log('tick!')
 }
 
+Stopwatch.elapsedSeconds
+
 console.log(newWatch.getTime());
 
 for (let i = 0; i < 20; i++) {
   newWatch.tick();
   console.log('tick!')
 }
+
+console.log('The time is now', newWatch.getTime());
+
+
+console.log('Reset stopwatch')
+newWatch.reset()
 
 console.log('The time is now', newWatch.getTime());
