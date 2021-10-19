@@ -1,8 +1,4 @@
 class ExampleClass {
-  constructor(value) {
-    this.value = value
-  }
-  return this.value
 }
 
 const example = new ExampleClass();
